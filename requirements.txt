@@ -1,0 +1,8 @@
+openai
+python-dotenv
+epicbox==1.1.0
+docker==4.4.4
+requests<2.32.0
+urllib3<2.0
+json_repair
+datasets

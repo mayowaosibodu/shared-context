@@ -1,0 +1,10 @@
+.env
+env/
+archive
+__pycache__
+run_logs/control
+run_logs/experimental
+run_logs/run.log
+.DS_Store
+*/.DS_Store
+*/*/.DS_Store

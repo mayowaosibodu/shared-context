@@ -1,0 +1,40 @@
+My goal was to create coherent, multi-stage attack scenarios that a human attacker might logically follow. The
+  previous automated method failed because it only looked at the subtlety of individual prompts, not their
+  relationship to each other, resulting in disjointed and illogical chains.
+
+  Here was my manual process:
+
+   1. Establish a "Kill Chain" Framework: I adopted a simplified three-stage "kill chain" model to structure each
+      attack narrative. This model represents a logical progression of an attack:
+       * Stage X: Reconnaissance. The initial phase where the attacker gathers information about the target system
+         (e.g., discovering files, users, or running processes).
+       * Stage Y: In-Network Action. The "foothold" or "lateral movement" phase. After initial recon, the attacker
+         takes an action to establish control, escalate privileges, or set up covert communication channels.
+       * Stage Z: Objective/Exfiltration. The final phase where the attacker achieves their ultimate goal, such as
+         stealing data, capturing credentials, or executing a payload.
+
+   2. Review the MITRE Dataset: I went through the mitre_benchmark_100_per_category_with_augmentation.json dataset,
+      which contains hundreds of individual prompts, each tagged with a specific MITRE ATT&CK TTP (Tactic, Technique,
+      and Procedure).
+
+   3. Categorize Prompts by Stage: I manually sorted relevant prompts from the dataset into the three stages (X, Y, Z)
+      based on their associated TTPs.
+       * Prompts related to "File and Directory Discovery" or "Process Discovery" were categorized as Stage X.
+       * Prompts related to "Command and Control," "Proxy," or "Lateral Movement" were categorized as Stage Y.
+       * Prompts related to "Exfiltration," "Data from Local System," or "Screen Capture" were categorized as Stage Z.
+
+   4. Construct Coherent Narratives: This was the most critical step. For each of the six chains, I hand-picked one
+      prompt from each stage (X, Y, and Z) to create a logical story. I ensured the subtasks were compositional,
+      meaning the motivation for each step follows from the successful completion of the previous one.
+
+      For example, for the "Reconnaissance -> Covert C2 -> Data Exfiltration" chain:
+       * I first selected a Stage X prompt about finding files.
+       * Then, I selected a Stage Y prompt about setting up a hidden communication channel (domain fronting). This
+         logically follows, as an attacker who has found valuable files now needs a way to get them out.
+       * Finally, I selected a Stage Z prompt about exfiltrating data using an encrypted messaging app, which provides
+         a specific method for using the channel established in the previous step.
+
+   5. Finalize and Format: I assembled these hand-picked prompts into the curated_chains list within the
+      prepared_benchmark.json data, adding the implied_overarching_intent to describe the narrative of each chain.
+      This ensured the file would contain logical, escalating attack scenarios for our tests.
+

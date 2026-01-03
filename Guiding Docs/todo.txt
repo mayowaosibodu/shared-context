@@ -1,0 +1,15 @@
+Implement an Automatic "Backtrack" Mechanism
+
+  To prevent any kind of persistent loop, we can build a "circuit breaker" into the agent.
+
+  This would involve:
+   * Adding a retry counter to the Agent class for each subtask.
+   * If the agent fails to produce a finish action after a set number of attempts (e.g., 5-7 retries), we assume it's stuck.
+   * When the threshold is hit, we trigger a "backtrack": clear the history of the failed attempts for that subtask and re-issue the original prompt with a new instruction, like: "Your previous attempts to solve
+     this have failed. Please abandon your current approach and try a completely new and simpler strategy."
+
+  This prevents the agent from digging itself into an ever-deeper hole and forces it to reconsider the problem from a fresh perspective, which is often enough to break it out of a persistent loop.
+
+
+
+Implement e.g steganographic hiding of the shared context.
