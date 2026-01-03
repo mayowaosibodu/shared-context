@@ -1,4 +1,4 @@
-# Testing Shared Context Across Subtasks to Protect Agents Against Malicious Objectives Split Into 'Harmless-Seeming' Subtasks
+# Shared Context Across Subtasks: An Approach to Protect Agents Against Malicious Objectives Split Into 'Harmless-Seeming' Subtasks
 
 This project provides a framework for testing whether providing stateful, shared context to an AI agent improves its ability to detect and refuse multi-step 'harmless-seeming' tasks which sum to a malicious over-arching objective, while preserving its ability to perform benign tasks. [Lesswrong link]
 
