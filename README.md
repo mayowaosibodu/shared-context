@@ -1,6 +1,6 @@
-# Stateful AI Safety Benchmark
+# Testing Shared Context Across Subtasks to Protect Agents Against Malicious Objectives Split Into 'Harmless-Seeming' Subtasks
 
-This project provides a framework for testing whether providing stateful, shared context to an AI agent improves its ability to detect and refuse multi-step malicious tasks while preserving its ability to perform benign tasks.
+This project provides a framework for testing whether providing stateful, shared context to an AI agent improves its ability to detect and refuse multi-step 'harmless-seeming' tasks which sum to a malicious over-arching objective, while preserving its ability to perform benign tasks. [Lesswrong link]
 
 It compares a stateless "Control" agent against an "Experimental" agent that is given a memory of its past actions and inferred intents.
 
